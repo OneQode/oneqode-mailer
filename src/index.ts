@@ -1,0 +1,7 @@
+export { createMailer, type Mailer, type MailerOptions } from './mailer.js'
+export { mailerFromEnv } from './env.js'
+export { MailDeliveryError, ProviderError, type FailureKind } from './errors.js'
+export { sendgridProvider, type SendGridOptions } from './providers/sendgrid.js'
+export { postmarkProvider, type PostmarkOptions } from './providers/postmark.js'
+export { smtpProvider, type SmtpOptions } from './providers/smtp.js'
+export type { Address, Attachment, MailMessage, Provider, SendResult } from './types.js'
