@@ -32,6 +32,7 @@ const { provider, messageId } = await mailer.send({
 | `SMTP_PORT` | `587` | |
 | `SMTP_SECURE` | `true` when port is 465 | Implicit TLS. Port 587 upgrades with STARTTLS. |
 | `SMTP_USER`, `SMTP_PASS` | | |
+| `SMTP_FROM` | the message's sender | Sender address for SMTP only, keeping the display name. For an SMTP host that may only send from another domain. |
 | `MAIL_TIMEOUT_MS` | `10000` | Per provider attempt. |
 | `MAIL_PROVIDER_COOLDOWN_MS` | `300000` | How long an unavailable provider is benched. |
 
