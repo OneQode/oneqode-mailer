@@ -30,6 +30,7 @@ const builders: Record<string, (env: Env, timeoutMs?: number) => Provider | unde
           secure: env.SMTP_SECURE ? env.SMTP_SECURE === 'true' : undefined,
           user: env.SMTP_USER || undefined,
           pass: env.SMTP_PASS || undefined,
+          from: env.SMTP_FROM || undefined,
           timeoutMs,
         })
       : undefined,

@@ -8,6 +8,8 @@ export interface SmtpOptions {
   secure?: boolean
   user?: string
   pass?: string
+  /** Sender address for this provider only, keeping the message's display name. */
+  from?: string
   timeoutMs?: number
 }
 
@@ -39,7 +41,7 @@ export function smtpProvider(opts: SmtpOptions, transport?: Transporter): Provid
     async send(msg) {
       try {
         const info = await transporter.sendMail({
-          from: address(msg.from),
+          from: address(opts.from ? { ...msg.from, email: opts.from } : msg.from),
           to: msg.to.map(address),
           replyTo: msg.replyTo ? address(msg.replyTo) : undefined,
           subject: msg.subject,

@@ -146,6 +146,14 @@ describe('smtp', () => {
     })
   })
 
+  it('sends from SMTP_FROM with the message display name when set', async () => {
+    const transport = nodemailer.createTransport({ jsonTransport: true })
+    const sendMail = vi.spyOn(transport, 'sendMail')
+    await smtpProvider({ host: 'unused', from: 'noreply@oneqo.de' }, transport).send(msg)
+
+    expect(sendMail.mock.calls[0][0]).toMatchObject({ from: { address: 'noreply@oneqo.de', name: 'OneQode "Legal"' } })
+  })
+
   it.each([
     [{ code: 'EAUTH', responseCode: 535 }, 'unavailable'],
     [{ code: 'EENVELOPE', responseCode: 530 }, 'unavailable'],
